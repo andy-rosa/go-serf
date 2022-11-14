@@ -1,6 +1,8 @@
 import gulp from 'gulp';
+import autoprefixer from 'gulp-autoprefixer';
 import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
+import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
@@ -21,26 +23,36 @@ const paths = {
 
 const sass = gulpSass(dartSass);
 
+// Обработка стилей
 export const styles = () => {
   return gulp.src(paths.styles.src)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS())
+    .pipe(autoprefixer({
+      cascade: false
+    }))
+    .pipe(cleanCSS({
+      level: 2
+    }))
     .pipe(rename({
       basename: 'main',
       suffix: '.min'
     }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.styles.dest))
 };
 
 // Обрабтка скриптов
 export const scripts = () => {
-  return gulp.src(paths.scripts.src, {
-    sourcemaps: true
-  })
-  .pipe(babel())
+  return gulp.src(paths.scripts.src)
+  .pipe(sourcemaps.init())
+  .pipe(babel({
+    presets: ['@babel/env']
+  }))
   .pipe(uglify())
   .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(paths.scripts.dest))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest(paths.scripts.dest))
 };
 
 export const watch = () => {
@@ -49,7 +61,7 @@ export const watch = () => {
 
 };
 
-export const clean = await deleteAsync(['dist']);
+export const clean = await deleteAsync(['dist/*']);
 
 const build = gulp.series(clean, gulp.parallel(styles, scripts), watch);
 
