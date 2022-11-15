@@ -5,12 +5,15 @@ import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
 import sourcemaps from 'gulp-sourcemaps';
 import htmlmin from 'gulp-htmlmin';
+import size from 'gulp-size';
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import { deleteAsync } from 'del';
+
+import browserSync from 'browser-sync';
 
 const paths = {
   styles: {
@@ -22,7 +25,7 @@ const paths = {
     dest: 'dist'
   },
   scripts: {
-    src: 'src/scripts/**/*.js',
+    src: ['src/scripts/**/*.ts', 'src/scripts/**/*.js'],
     dest: 'dist/js/'
   },
   images: {
@@ -49,7 +52,9 @@ export const styles = async () => {
       suffix: '.min'
     }))
     .pipe(sourcemaps.write('.'))
+    .pipe(size())
     .pipe(gulp.dest(paths.styles.dest))
+    .pipe(browserSync.stream());
 };
 
 // Обрабтка скриптов
@@ -62,7 +67,9 @@ export const scripts = async () => {
     .pipe(uglify())
     .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write('.'))
+    .pipe(size())
     .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(browserSync.stream());
 };
 
 // Обработка картинок
@@ -71,7 +78,8 @@ export const img = async () => {
     .pipe(imagemin({
       progressive: true
     }))
-    .pipe(gulp.dest(paths.images.dest))
+    .pipe(size())
+    .pipe(gulp.dest(paths.images.dest));
 };
 
 // Минифицирование html
@@ -80,12 +88,21 @@ export const htmlMinify = async () => {
   .pipe(htmlmin({
     collapseWhitespace: true
   }))
+  .pipe(size())
   .pipe(gulp.dest(paths.html.dest))
+  .pipe(browserSync.stream());
 };
 
 export const watch = () => {
-  gulp.watch(paths.styles.src, styles)
-  gulp.watch(paths.scripts.src, scripts)
+  browserSync.init({
+    server: {
+      baseDir: './dist'
+    }
+  });
+  gulp.watch(paths.html.dest).on('change', browserSync.reload);
+  gulp.watch(paths.html.src, htmlMinify);
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.scripts.src, scripts);
 };
 
 export const clean = async () => await deleteAsync(['dist/*']);
