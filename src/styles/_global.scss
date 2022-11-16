@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+
+  color: $color-white;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.suptitle--left {
+  display: inline-block;
+
+  position: relative;
+  padding-left: 103px;
+
+  font-size: 22px;
+  line-height: 32px;
+
+  letter-spacing: 7.33333px;
+  text-transform: uppercase;
+
+  color: $color-white;
+  opacity: 0.5;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 80px;
+    height: 1px;
+
+    background-color: $color-white;
+  }
+
+}
