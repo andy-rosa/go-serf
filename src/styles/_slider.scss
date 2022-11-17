@@ -132,6 +132,7 @@
   gap: 20px;
 
   text-align: center;
+  z-index: 20;
 }
 
 .button {
@@ -263,5 +264,30 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+}
+
+.header__arrows {
+  position: absolute;
+  left: 209px;
+  bottom: 40px;
+}
+
+.header__map {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.road-animate {
+  stroke-dashoffset: 600;
+  stroke-dasharray: 600;
+  animation: render-road 5s 6s forwards;
+}
+
+@keyframes render-road {
+  to {
+  stroke-dashoffset: 0;
   }
 }

@@ -31,6 +31,13 @@ const paths = {
   images: {
     src: 'src/img/*',
     dest: 'dist/img'
+  },
+  libs: {
+    src: {
+      normalize: 'node_modules/normalize.css/normalize.css',
+      animateCss: 'node_modules/animate.css/animate.css'
+    },
+    dest: 'src/styles/'
   }
 }
 
@@ -55,6 +62,16 @@ export const styles = async () => {
     .pipe(size())
     .pipe(gulp.dest(paths.styles.dest))
     .pipe(browserSync.stream());
+};
+
+// Подключение css библиотек
+export const addCssLibs = async () => {
+  gulp.src([
+    paths.libs.src.normalize,
+    paths.libs.src.animateCss
+  ])
+  .pipe(concat('_libs.scss'))
+  .pipe(gulp.dest(paths.libs.dest))
 };
 
 // Обрабтка скриптов
@@ -115,7 +132,7 @@ const build = gulp.series(
     styles,
     scripts,
     img
-  ),
+    ),
   watch);
 
 export default build;
