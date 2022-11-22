@@ -1,11 +1,13 @@
 .page-header {
-  //wrapper
   height: 100vh;
 
   .header__title {
     position: absolute;
     top: 0;
     left: 0;
+
+    margin: 0;
+
     z-index: 10;
     max-width: 467px;
     font-weight: 800;
@@ -80,6 +82,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    z-index: 1;
    }
 }
 
@@ -291,3 +294,4 @@
   stroke-dashoffset: 0;
   }
 }
+

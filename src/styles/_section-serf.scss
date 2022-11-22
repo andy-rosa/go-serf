@@ -1,0 +1,382 @@
+.surf {
+  padding: 130px 0 0px;
+  background-image: url(../img/marker-background.svg);
+  background-position: top 200px right -140px;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.surf__subtitle {
+  text-align: right;
+  padding-right: 80px;
+  margin-top: -66px;
+}
+
+.surf-slider__track {
+  display: flex;
+  flex-wrap: nowrap;
+
+  transition: all .2s ease-in-out;
+}
+
+.surf-box {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__inner {
+    position: relative;
+    min-height: 750px;
+    top: 0;
+    bottom: 0;
+    transition: all 0.5s;
+
+    background: rgba($color-black, 0.85);
+    &:hover {
+      background: rgba($color-black, 0.3);
+    }
+
+  }
+
+.surf-box__inner-title {
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 72px 0 0 40px;
+  width: 140px;
+}
+
+.surf-box__inner-location {
+  position: absolute;
+  left: 40px;
+  bottom: 80px;
+
+  white-space: nowrap;
+
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  width: 0;
+  height: 0;
+
+  transform: rotate(-90deg);
+
+  span {
+    font-weight: 100;
+  }
+}
+
+
+  @for $i from 1 through 4 {
+    @if ($i == 1) {
+      &:first-child {
+        background-image: url(../img/slide-#{$i}.jpg);
+        background-color: palegreen;
+      }
+    }
+
+    @if ($i == 8) {
+      &:last-child {
+        background-image: url(../img/slide-#{$i}.jpg);
+      }
+    }
+
+    &:nth-child(#{$i}) {
+      background-image: url(../img/slide-#{$i}.jpg);
+    }
+  }
+}
+
+.surf-slider {
+  width: 100vw;
+  position: relative;
+}
+
+.surf-box{
+  height: 750px;
+
+  &:nth-child(4n + 1) {
+    margin-top: 32px;
+  }
+  &:nth-child(4n + 3) {
+    margin-top: 90px;
+  }
+}
+
+.surf-slider-buttons__container {
+  position: absolute;
+  top: -64px;
+  right: 80px;
+
+  display: flex;
+  gap: 20px;
+
+  text-align: center;
+  z-index: 20;
+
+}
+
+.button {
+  &--next {
+    @include slide-arrow;
+  }
+
+  &--prev {
+    @include slide-arrow;
+  }
+}
+
+.surf-box__inner {
+
+  transition: all .2s ease-in;
+
+}
+
+.surf-box__inner-button {
+  display: none;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: none;
+  border: none;
+
+  text-align: center;
+
+  &--active {
+    display: block;
+  }
+}
+
+
+.button-link {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 36px;
+
+  span {
+    position: relative;
+    display: inline-block;
+    padding: 16px 56px 14px 16px;
+    background-color: $color-green;
+    margin-left: 18px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 1px;
+      background-color: $color-white;
+      top: 50%;
+      left: -10px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 21px;
+      background-image: url(../img/arrows-right.svg);
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+
+.slider-map {
+  position: relative;
+
+  max-width: 1200px;
+  min-height: 635px;
+  background-image: url(../img/world-map-dots.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+
+  display: flex;
+  margin-bottom: 180px;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 268px;
+    left: 166px;
+
+    width: 14px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+    background-image: url(../img/marker-decoration.png);
+  }
+
+  .slider-dots--current {
+    .slider-dots__content {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.slider-dots--current {
+  .slider-dots__circle {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: -9px;
+      left: -1px;
+      border-bottom: 18px solid $color-green;
+      border-left: 12px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
+
+.slider-dots__circle {
+
+  width: 24px;
+  height: 24px;
+  background-color: $color-green;
+  border-radius: 50%;
+
+  box-shadow: 0px 0px 35px rgba($color-green, 0.84);
+}
+
+.slider-dots__content {
+  position: absolute;
+  bottom: 40px;
+  right: calc(-245px / 2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in;
+
+  border-radius: 6px;
+  background-color: rgba($color-background, 0.7);
+  background-image: url(../img/marker-background.svg);
+  background-repeat: no-repeat;
+  background-position: top -20px right -100px;
+
+  width: 285px;
+  padding: 28px 32px 0px 32px;
+
+  span {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 12px;
+    white-space: nowrap;
+  }
+}
+.slider-dots__content-row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.slider-dots__content-title {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 26px;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $color-green;
+    width: 80px;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.slider-dots__content-subtitle {
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+}
+
+.slider-dots__content-link {
+  display: block;
+  position: absolute;
+  right: 32px;
+  top: 31px;
+}
+
+.slider-dots__content-list {
+  display: flex;
+  padding: 0px;
+  gap: 38px;
+  align-items: center;
+
+  li {
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 4px;
+  }
+}
+
+.slider-dots {
+  cursor: pointer;
+
+  &--0 {
+    position: absolute;
+    top: 280px;
+    left: 136px;
+  }
+  &--1 {
+    position: absolute;
+    top: 492px;
+    right: 86px;
+  }
+  &--2 {
+    position: absolute;
+    top: 395px;
+    right: 378px;
+  }
+  &--3 {
+    position: absolute;
+    top: 212px;
+    left: 530px;
+  }
+  &--4 {
+    position: absolute;
+    top: 488px;
+    left: 408px;
+
+    .slider-dots__content {
+      left: 0;
+    }
+  }
+  &--5 {
+    position: absolute;
+    top: 332px;
+    left: 308px;
+  }
+  &--6 {
+    position: absolute;
+    bottom: 55px;
+    right: 558px;
+  }
+  &--7 {
+    position: absolute;
+    top: 330px;
+    left: 0px;
+
+    .slider-dots__content {
+      right: -82px;
+    }
+  }
+}

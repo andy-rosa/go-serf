@@ -1,23 +1,33 @@
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+ul,
+ol {
+  list-style-type: none;
+}
+
 body {
+  overflow-x: hidden;
   font-family: 'Fira Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
 
   color: $color-white;
+  background-color: $color-background;
 }
 
 a {
   display: inline-block;
   text-decoration: none;
+  color: $color-white;
 }
 
-.suptitle--left {
+.headline--left {
   display: inline-block;
 
   position: relative;
@@ -29,8 +39,7 @@ a {
   letter-spacing: 7.33333px;
   text-transform: uppercase;
 
-  color: $color-white;
-  opacity: 0.5;
+  opacity: 0.2;
 
   &::before {
     content: '';
@@ -45,4 +54,65 @@ a {
     background-color: $color-white;
   }
 
+}
+
+
+.title {
+
+  span {
+    position: relative;
+
+    display: inline-block;
+    margin: 0;
+
+    font-weight: 800;
+    font-size: 200px;
+    text-transform: uppercase;
+    color: rgba($color-white, 0.05);
+
+    transform: translateX(-50px);
+  }
+
+  h3 {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+
+    margin: 0;
+    color: $color-white;
+    font-size: 80px;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 1px;
+      background-color: $color-green;
+    }
+
+  }
+}
+
+.container {
+  min-width: 1920px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  display: inline-block;
+  text-align: right;
+  text-transform: uppercase;
+
+  &__head {
+    font-weight: 800;
+    font-size: 40px;
+    padding-right: 5px;
+
+    span {
+      font-weight: 100;
+    }
+  }
 }
