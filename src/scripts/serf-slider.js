@@ -34,22 +34,30 @@ const addActiveSlide = () => {
   if ((activeSlide === itemsSurfCount - 1) || buttonSurfNext.disabled) {
     return
   }
+  mapDots[activeSlide].classList.remove('slider-dots--current');
+
   surfSliderItems[activeSlide].querySelector('.surf-box__inner-button').classList.remove('surf-box__inner-button--active')
   surfSliderItems[activeSlide].querySelector('.surf-box__inner').style.background = null;
   ++activeSlide;
   surfSliderItems[activeSlide].querySelector('.surf-box__inner-button').classList.add('surf-box__inner-button--active')
   surfSliderItems[activeSlide].querySelector('.surf-box__inner').style.background = 'rgba(28,33,33,0.3)';
+  mapDots[activeSlide].classList.add('slider-dots--current');
+
 };
 
 const removeActiveSlide = () => {
   if ((activeSlide === 0) || buttonSurfPrev.disabled) {
     return
   }
+  mapDots[activeSlide].classList.remove('slider-dots--current');
+
   surfSliderItems[activeSlide].querySelector('.surf-box__inner-button').classList.remove('surf-box__inner-button--active')
   surfSliderItems[activeSlide].querySelector('.surf-box__inner').style.background = null;
   activeSlide--;
   surfSliderItems[activeSlide].querySelector('.surf-box__inner-button').classList.add('surf-box__inner-button--active')
   surfSliderItems[activeSlide].querySelector('.surf-box__inner').style.background = 'rgba(28,33,33,0.3)';
+  mapDots[activeSlide].classList.add('slider-dots--current');
+
 };
 
 const onSurfButtonNextClick = () => {
@@ -97,8 +105,10 @@ checkSurfButtons();
 
 const onSlideClick = (evt) => {
   if (evt.target.matches('.surf-box__inner')) {
+    mapDots[activeSlide].classList.remove('slider-dots--current');
+
     surfSliderItems[activeSlide].querySelector('.surf-box__inner-button')
-      .classList.remove('surf-box__inner-button--active')
+      .classList.remove('surf-box__inner-button--active');
     surfSliderItems[activeSlide].querySelector('.surf-box__inner')
       .style.background = null;
 
@@ -107,7 +117,8 @@ const onSlideClick = (evt) => {
     evt.target
       .style.background = 'rgba(28,33,33,0.3)';
 
-    activeSlide = +evt.target.closest('.surf-box').dataset.slideIndex
+    activeSlide = +evt.target.closest('.surf-box').dataset.slideIndex;
+    mapDots[activeSlide].classList.add('slider-dots--current');
 
     checkSurfButtons();
   }
