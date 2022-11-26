@@ -1,5 +1,5 @@
-let surfPosition = 0;
 
+let surfPosition = 0;
 let activeSlide = 1;
 
 const surf_SLIDER_TO_SHOW = 4;
