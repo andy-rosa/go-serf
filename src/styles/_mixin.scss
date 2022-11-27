@@ -12,3 +12,30 @@
     opacity: 0.2;
   }
 }
+
+@mixin headline {
+  display: inline-block;
+
+  position: relative;
+
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 32px;
+
+  letter-spacing: 7.33333px;
+  text-transform: uppercase;
+
+  opacity: 0.5;
+}
+
+@mixin headline-before {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+
+  width: 80px;
+  height: 1px;
+
+  background-color: $color-white;
+}

@@ -28,32 +28,22 @@ a {
 }
 
 .headline--left {
-  display: inline-block;
-
-  position: relative;
+  @include headline;
   padding-left: 103px;
 
-  font-size: 22px;
-  line-height: 32px;
-
-  letter-spacing: 7.33333px;
-  text-transform: uppercase;
-
-  opacity: 0.2;
-
   &::before {
-    content: '';
-
-    position: absolute;
-    top: 50%;
+    @include headline-before;
     left: 0;
-
-    width: 80px;
-    height: 1px;
-
-    background-color: $color-white;
   }
+}
 
+
+.headline--right {
+  @include headline;
+  &::before {
+    @include headline-before;
+    left: 105%;
+  }
 }
 
 
@@ -114,5 +104,16 @@ a {
     span {
       font-weight: 100;
     }
+  }
+}
+
+.description {
+  display: inline-block;
+  text-align: left;
+  text-transform: uppercase;
+  &__head {
+    font-weight: 800;
+    font-size: 40px;
+    padding-right: 5px;
   }
 }
