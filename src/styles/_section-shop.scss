@@ -1,0 +1,21 @@
+.shop {
+  background-image: url(../img/shop-background.png);
+  background-repeat: no-repeat;
+  padding: 60px 0 0 132px;
+  background-position: right center;
+}
+
+.shop__inner {
+  display: flex;
+}
+
+.shop-info {
+  max-width: 480px;
+  width: 100%;
+  margin-right: 40px;
+}
+
+.description__head {
+  max-width: 340px;
+  margin-bottom: 48px;
+}

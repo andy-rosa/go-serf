@@ -1,18 +1,18 @@
-.travel {
+.sleep {
   position: relative;
   padding: 130px 0 250px;
 
-  background-image: url(../img/travel-drink.png);
-  background-position: bottom right;
+  background-image: url(../img/sleep-flower.png);
+  background-position: bottom 200px right -160px;
   background-repeat: no-repeat;
   .slider-buttons__container {
     top: 400px;
   }
 }
 
-.travel-slider {
+.sleep-slider {
   &__head {
-    background-image: url(../img/travel-background.png);
+    background-image: url(../img/sleep-background.png);
     background-repeat: no-repeat;
     background-position: top left;
     min-height: 780px;
@@ -20,29 +20,32 @@
   &__description {
     margin-top: -120px;
     min-height: 320px;
-    background-image: url(../img/airlina-virgin.png);
-    background-repeat: no-repeat;
-    background-position: right -50px center;
+
     img {
-      padding-left: 26px;
+      padding-left: 16px;
     }
   }
 }
 
-.travel__subtitle {
+.description__head {
+  display: flex;
+  align-items: center;
+}
+
+.sleep__subtitle {
   text-align: right;
   padding-right: 80px;
   margin-top: -66px;
 }
 
-.travel-slider {
+.sleep-slider {
   &__description,
   &__info {
     padding-left: 132px;
   }
 }
 
-.travel-slider__info {
+.sleep-slider__info {
   display: flex;
   justify-content: space-around;
 
@@ -68,7 +71,7 @@
     line-height: 36px;
     text-transform: uppercase;
     padding-left: 40px;
-    span {
+    .night-price__subtitle {
       position: absolute;
       bottom: -8px;
       right: 0;
@@ -82,15 +85,50 @@
   }
 }
 
-.travel-slider__info-item {
+.sleep-slider__info-item {
   min-height: 200px;
   margin-bottom: 66px;
   position: relative;
 }
 
-.travel-slider__button {
+.sleep-slider__button {
   background: none;
   border: none;
   display: block;
   margin: 0 auto;
 }
+
+
+.night,
+.guests {
+  position: relative;
+
+  .minus {
+    // padding: 8px 10px 21px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .plus {
+    padding: 10px;
+    padding-right: 0;
+    margin-bottom: 11px;
+   }
+}
+
+.sleep-slider__night-control,
+.sleep-slider__guests-control {
+  position: absolute;
+  bottom: -70px;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  .minus,
+  .plus {
+    cursor: pointer;
+  }
+}
+
