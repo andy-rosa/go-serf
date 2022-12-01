@@ -117,3 +117,39 @@ a {
     padding-right: 5px;
   }
 }
+
+.go-surf__button {
+  border: none;
+  background: none;
+}
+
+.final-button {
+  margin-top: 264px;
+  margin-bottom: 76px;
+  display: flex;
+  justify-content: center;
+  .final-link {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 36px;
+
+    span {
+      position: relative;
+      display: inline-block;
+      padding: 16px 18px 14px 16px;
+      background-color: $color-green;
+      margin-left: 18px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 1px;
+        background-color: $color-white;
+        top: 50%;
+        left: -10px;
+      }
+    }
+    }
+}
