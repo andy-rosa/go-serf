@@ -1,0 +1,89 @@
+.header__aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 169px;
+  height: 100%;
+
+  border-right: 1px solid rgba($color-white, 0.25);
+  text-align: center;
+
+  z-index: 20;
+
+  .logo {
+    margin-bottom: 32px;
+  }
+}
+
+.menu {
+  &__list {
+    width: 64px;
+    margin: 0 auto;
+
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 18px;
+
+      cursor: pointer;
+
+      img {
+        margin-bottom: 4px;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+.header__search {
+  margin-top: 36px;
+  margin-bottom: 10px;
+}
+
+.header__date {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 64px;
+  text-transform: uppercase;
+
+  .correct-time {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    letter-spacing: 2.6px;
+  }
+}
+
+.location {
+  position: absolute;
+  left: 40px;
+
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 14px;
+  letter-spacing: 1.05px;
+
+  &::before {
+    content: url(../images/common/map-marker.svg);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

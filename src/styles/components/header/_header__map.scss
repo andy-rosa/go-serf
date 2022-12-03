@@ -1,0 +1,20 @@
+.header__map {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  z-index: 5;
+}
+
+// Анимация карты
+.road-animate {
+  stroke-dashoffset: 600;
+  stroke-dasharray: 600;
+  animation: render-road 5s 5s forwards;
+}
+
+@keyframes render-road {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

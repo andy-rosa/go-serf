@@ -5,8 +5,10 @@ import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
 import sourcemaps from 'gulp-sourcemaps';
 import htmlmin from 'gulp-htmlmin';
+import gulpPug from 'gulp-pug';
 import size from 'gulp-size';
 import babel from 'gulp-babel';
+import ts from 'gulp-typescript';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
 import dartSass from 'sass';
@@ -20,22 +22,25 @@ const paths = {
     src: ['src/styles/**/*.sass','src/styles/**/*.scss'],
     dest: 'dist/css/'
   },
+  pug: {
+    src: 'src/html/pages/*.pug',
+    dest: 'dist/'
+  },
   html: {
-    src: 'src/*.html',
-    dest: 'dist'
+    src: 'src/html/*.html',
+    dest: 'dist/'
   },
   scripts: {
-    src: ['src/scripts/**/*.ts', 'src/scripts/**/*.js'],
+    src: ['src/scripts/ts/**/*.ts', 'src/scripts/js/**/*.js'],
     dest: 'dist/js/'
   },
   images: {
-    src: 'src/img/*',
-    dest: 'dist/img'
+    src: 'src/images/**/*',
+    dest: 'dist/images/'
   },
   libs: {
     src: {
-      normalize: 'node_modules/normalize.css/normalize.css',
-      animateCss: 'node_modules/animate.css/animate.css'
+      normalize: 'node_modules/normalize.css/normalize.css'
     },
     dest: 'src/styles/'
   }
@@ -67,14 +72,13 @@ export const styles = async () => {
 // Подключение css библиотек
 export const addCssLibs = async () => {
   gulp.src([
-    paths.libs.src.normalize,
-    paths.libs.src.animateCss
+    paths.libs.src.normalize //Подключение normalize
   ])
   .pipe(concat('_libs.scss'))
   .pipe(gulp.dest(paths.libs.dest))
 };
 
-// Обрабтка скриптов
+// Обработка скриптов
 export const scripts = async () => {
   gulp.src(paths.scripts.src)
     .pipe(sourcemaps.init())
@@ -84,7 +88,9 @@ export const scripts = async () => {
     .pipe(uglify())
     .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write('.'))
-    .pipe(size())
+    .pipe(size({
+      showFiles: true
+    }))
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(browserSync.stream());
 };
@@ -97,6 +103,17 @@ export const img = async () => {
     }))
     .pipe(size())
     .pipe(gulp.dest(paths.images.dest));
+};
+
+//Подключение pug
+export const pug = async () => {
+  gulp.src(paths.pug.src)
+  .pipe(gulpPug({
+    collapseWhitespace: true
+  }))
+  .pipe(size())
+  .pipe(gulp.dest(paths.pug.dest))
+  .pipe(browserSync.stream());
 };
 
 // Минифицирование html
@@ -127,7 +144,7 @@ export const clean = async () => await deleteAsync(['dist/*']);
 
 const build = gulp.series(
   clean,
-  htmlMinify,
+  pug,
   gulp.parallel(
     styles,
     scripts,
