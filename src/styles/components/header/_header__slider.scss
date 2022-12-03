@@ -1,0 +1,133 @@
+.header__slider {
+  position: relative;
+  overflow: hidden;
+
+  &-item {
+    position: relative;
+    height: 100vh;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/common/header-background.jpg);
+
+    z-index: 1;
+  }
+}
+
+.slider__track {
+  display: flex;
+  transition: 0.2s;
+}
+
+.slider-item {
+  &__info {
+    position: absolute;
+    right: 80px;
+    bottom: 116px;
+
+    text-align: right;
+    text-transform: uppercase;
+    color: $color-white;
+
+    &-title {
+      margin-bottom: 48px;
+
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 86px;
+    }
+    &-suptitle {
+      margin-bottom: 5px;
+    }
+    &-suptext {
+      margin-bottom: 8px;
+    }
+    &-text {
+      margin-bottom: 20px;
+
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 46px;
+    }
+  }
+}
+
+.slider-buttons__container {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+
+  display: flex;
+  gap: 20px;
+
+  text-align: center;
+  z-index: 20;
+}
+
+.button {
+  &--next,
+  &--prev {
+    background: none;
+    border: none;
+
+    cursor: pointer;
+    &:disabled {
+      opacity: .4;
+    }
+  }
+}
+
+.slider-dots__list {
+  position: absolute;
+  bottom: 30px;
+  right: 80px;
+
+  width: 920px;
+  display: flex;
+  gap: 40px;
+
+  z-index: 100;
+}
+
+.slider-dots__item {
+  position: relative;
+  width: 200px;
+
+  list-style-position: inside;
+
+  &::marker {
+    content: "0" counter(list-item);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  &::after {
+    @include slider-dots-line;
+    border-top: 4px solid $color-white;
+  }
+
+  &--active::after {
+    @include slider-dots-line;
+    border-top: 4px solid $color-green;
+  }
+}
+
+.slider-dots__name {
+  position: absolute;
+  left: 0;
+  top: 11px;
+
+  display: inline-block;
+  width: 100%;
+
+  font-weight: 300;
+  line-height: 19px;
+  text-align: right;
+}
+
+
+
+
+

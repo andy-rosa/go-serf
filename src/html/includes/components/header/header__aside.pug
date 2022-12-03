@@ -1,0 +1,23 @@
+- const menuItems = ["Surf", "Travel", "Sleep", "Shop"];
+
+mixin list(name, numberIcon)
+  li
+    img(src=`images/common/nav-ico-${numberIcon}.svg` alt="")
+    span= name
+
+aside.header__aside
+  .logo
+    a(href="#" class="logo__link")
+      img(src="images/content/logo.svg" alt="Логотип Go-surf")
+
+  nav.menu
+    ul.menu__list
+      each item, index in menuItems
+        - const currentIcon = index + 1;
+        +list(item, currentIcon)
+
+  .header__search
+    img(src="images/common/search.svg" alt="")
+  time(class="header__date" datetime="2022-11-20") 20
+    span.correct-time 11 | 2022
+  p.location California

@@ -39,3 +39,12 @@
 
   background-color: $color-white;
 }
+
+@mixin slider-dots-line {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+
+  width: 100%;
+}

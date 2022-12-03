@@ -1,0 +1,31 @@
+- const shores = ["North", "South", "West", "East"];
+
+mixin slider-item(title)
+  .header__slider-item.slider-item
+    .slider-item__info
+      h4.slider-item__info-suptitle.headline--left Surf
+      h2.slider-item__info-title #{title} Shore
+      h4.slider-item__info-suptext.headline--left Condition
+      h3.slider-item__info-text Radical
+      a(href="#" class="slider-item__info-link")
+        img(src="images/common/arrows-right.svg" alt="")
+
+mixin slider-dots(name)
+  - const stateSlide = name === shores[0] ? "slider-dots__item slider-dots__item--active" : "slider-dots__item";
+  li(class=stateSlide)
+    p.slider-dots__name #{name} Shore
+
+.header__slider
+  .slider__track
+    each shore in shores
+      +slider-item(shore)
+
+  .slider-buttons__container
+    button(type="button" class="button--prev")
+      img(src="images/common/arrows-left.svg" alt="")
+    button(type="button" class="button--next")
+      img(src="images/common/arrows-right.svg" alt="")
+
+  ol.slider-dots__list.slider-dots
+    each shore in shores
+      +slider-dots(shore)
