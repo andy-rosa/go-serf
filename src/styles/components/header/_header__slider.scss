@@ -102,15 +102,11 @@
     font-size: 24px;
     line-height: 34px;
   }
-
   &::after {
-    @include slider-dots-line;
-    border-top: 4px solid $color-white;
+    @include slider-dots-line ($color-white);
   }
-
   &--active::after {
-    @include slider-dots-line;
-    border-top: 4px solid $color-green;
+    @include slider-dots-line ($color-green);
   }
 }
 

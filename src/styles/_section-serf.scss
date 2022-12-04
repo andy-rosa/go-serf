@@ -1,6 +1,6 @@
 .surf {
   padding: 130px 0 0px;
-  background-image: url(../img/marker-background.svg);
+  background-image: url(../images/common/marker-background.svg);
   background-position: top 200px right -140px;
   background-repeat: no-repeat;
   background-size: auto;
@@ -72,19 +72,19 @@
   @for $i from 1 through 4 {
     @if ($i == 1) {
       &:first-child {
-        background-image: url(../img/slide-#{$i}.jpg);
+        background-image: url(../images/common/slide-#{$i}.jpg);
         background-color: palegreen;
       }
     }
 
     @if ($i == 8) {
       &:last-child {
-        background-image: url(../img/slide-#{$i}.jpg);
+        background-image: url(../images/common/slide-#{$i}.jpg);
       }
     }
 
     &:nth-child(#{$i}) {
-      background-image: url(../img/slide-#{$i}.jpg);
+      background-image: url(../images/common/slide-#{$i}.jpg);
     }
   }
 }
@@ -178,7 +178,7 @@
       position: absolute;
       width: 25px;
       height: 21px;
-      background-image: url(../img/arrows-right.svg);
+      background-image: url(../images/common/arrows-right.svg);
       top: 50%;
       right: 18px;
       transform: translateY(-50%);
@@ -192,7 +192,7 @@
 
   max-width: 1200px;
   min-height: 635px;
-  background-image: url(../img/world-map-dots.png);
+  background-image: url(../images/common/world-map-dots.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -211,7 +211,7 @@
     height: 16px;
 
     background-repeat: no-repeat;
-    background-image: url(../img/marker-decoration.png);
+    background-image: url(../images/common/marker-decoration.png);
   }
 
   .slider-dots--current {
@@ -260,7 +260,7 @@
 
   border-radius: 6px;
   background-color: rgba($color-background, 0.7);
-  background-image: url(../img/marker-background.svg);
+  background-image: url(../images/common/marker-background.svg);
   background-repeat: no-repeat;
   background-position: top -20px right -100px;
 

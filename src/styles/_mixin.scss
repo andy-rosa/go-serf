@@ -40,11 +40,13 @@
   background-color: $color-white;
 }
 
-@mixin slider-dots-line {
+@mixin slider-dots-line ($color) {
   content: '';
   position: absolute;
   top: -5px;
   left: 0;
 
   width: 100%;
+
+  border-top: 4px solid $color;
 }

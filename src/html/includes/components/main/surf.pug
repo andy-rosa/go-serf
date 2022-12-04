@@ -1,0 +1,61 @@
+include surf-box-data
+
+- let counter = 0;
+
+mixin point(index)
+  div(class=`slider-dots slider-dots--${index}` data-slide-index=index)
+    .slider-dots__circle
+    .slider-dots__content
+      .slider-dots__content-row
+        .slider-dots__content-head
+          .slider-dots__content-title Airlie Beach
+          .slider-dots__content-subtitle Australia
+          a(href="#" class="slider-dots__content-link")
+            img(src="images/common/arrows-right.svg" alt="")
+      .slider-dots__content-row
+        ul.slider-dots__content-list
+          li
+            img(src="images/common/surf-icon.svg" alt="")
+            |9 - 13
+            span Surf FT
+          li
+            img(src="images/common/water-icon.svg" alt="")
+            |+2.3
+            span Tide FT
+          li
+            img(src="images/common/wind-icon.svg" alt="")
+            |4 SE
+            span Wind KTS
+
+mixin box(surfBox, index)
+  .surf-box(data-slide-index=index)
+    .surf-box__inner
+      .surf-box__inner-title= `${surfBox.title}`
+      .surf-box__inner-location!= `${surfBox.location}`
+      button.surf-box__inner-button
+        a(href="#" class="button-link") view #[span surf]
+
+section.surf
+  .container
+      h2.title
+        span surf
+          h3 surf
+      .surf__subtitle
+        .subtitle
+          .headline--left Current location
+          .subtitle__head California #[span |] USA
+      .slider-map
+        while counter < 8
+          +point(counter)
+          - counter++
+
+      .surf-slider
+        .surf-slider__track
+          each surfBox, index in surfBoxes
+            +box(surfBox, index)
+
+        .surf-slider-buttons__container
+          button(type="button" class="button--prev")
+            img(src="images/common/arrows-left.svg" alt="")
+          button(type="button" class="button--next")
+            img(src="images/common/arrows-right.svg" alt="")
