@@ -1,0 +1,30 @@
+@import '../components/header/_header__map';
+@import '../components/header/_header__aside';
+@import '../components/header/_header__slider';
+
+.page-header {
+  height: 100vh;
+}
+
+.header__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  max-width: 467px;
+  margin: 0;
+
+  font-size: 200px;
+  font-weight: 800;
+  line-height: 156px;
+  text-transform: uppercase;
+
+  opacity: 0.07;
+  z-index: 10;
+}
+
+.header__arrows {
+  position: absolute;
+  left: 209px;
+  bottom: 40px;
+}

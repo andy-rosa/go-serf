@@ -1,23 +1,24 @@
 - const menuItems = ["Surf", "Travel", "Sleep", "Shop"];
 
 mixin list(name, numberIcon)
-  li
-    img(src=`images/common/nav-ico-${numberIcon}.svg` alt="")
-    span= name
+  li.navigation__item
+    img.navigation__icon(src=`images/common/nav-ico-${numberIcon}.svg` alt=`${name}-link`)
+    span.navigation__item-name= name
 
-aside.header__aside
+aside.header-aside.header-aside__wrapper
   .logo
-    a(href="#" class="logo__link")
-      img(src="images/content/logo.svg" alt="Логотип Go-surf")
+    a(href="#")
+      img(src="images/content/logo.svg" alt="Logo Go-surf")
 
-  nav.menu
-    ul.menu__list
+  nav.navigation
+    ul.navigation__list
       each item, index in menuItems
         - const currentIcon = index + 1;
         +list(item, currentIcon)
 
-  .header__search
-    img(src="images/common/search.svg" alt="")
-  time(class="header__date" datetime="2022-11-20") 20
-    span.correct-time 11 | 2022
-  p.location California
+  .header-aside__search
+    img(src="images/common/search.svg" alt="Search icon")
+
+  time.header-aside__date(datetime="2022-11-20") 20
+    span.header-aside__correct-time.correct-time 11 | 2022
+  p.header-aside__location.location California
