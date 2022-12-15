@@ -1,0 +1,48 @@
+mixin control(group)
+  div(class=`sleep__${group}-control`)
+    .minus
+      svg(width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M0.137451 0.376953H13.8632V3.12178H0.137451L0.137451 0.376953Z" fill="#4AF6CD")
+    .plus
+      svg(width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M0.137451 5.62744H13.8632V8.37226H0.137451L0.137451 5.62744Z" fill="#4AF6CD")
+        path(d="M5.62711 0.137695H8.37193V13.8635H5.62711V0.137695Z" fill="#4AF6CD")
+
+section.sleep
+  .container
+    h2.title
+      span Sleep
+        h3 Sleep
+
+    .sleep__head
+      .sleep__subtitle
+        .subtitle
+          .headline--left Resorts
+          .subtitle__head Auberge #[span |] Australia
+    .sleep__description
+      .description
+        .headline--right Rating
+        .description__head Excellent
+        img(src="./images/common/sleep-star.png" alt="")
+
+      ul.sleep__info
+        li.sleep__info-item
+          .sleep__info-subtitle Resort
+          .sleep__info-title Auberge <br> Australia
+
+        li.sleep__info-item
+          .sleep__info-subtitle # of Nights
+          .sleep__info-title.night #[span.night-value 5] Nights
+            +control('night')
+
+        li.sleep__info-item
+          .sleep__info-subtitle # of Guestss
+          .sleep__info-title.guests #[span.guests-value 5] Guests
+            +control('guests')
+
+        li.sleep__info-item
+          .sleep__info-subtitle Pricing
+          .sleep__info-title.result-price $ #[span.price-value 349] USD #[span.night-price__subtitle Per Night]
+
+      button.sleep__button
+        a.button-link(href="#") Book #[span Stay]

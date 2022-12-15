@@ -5,12 +5,11 @@
   background-image: url(../images/common/sleep-flower.png);
   background-position: bottom 200px right -160px;
   background-repeat: no-repeat;
-  .slider-buttons__container {
-    top: 400px;
-  }
-}
 
-.sleep-slider {
+  &__description,
+  &__info {
+    padding-left: 132px;
+  }
   &__head {
     background-image: url(../images/common/sleep-background.png);
     background-repeat: no-repeat;
@@ -25,6 +24,7 @@
       padding-left: 16px;
     }
   }
+
 }
 
 .description__head {
@@ -38,14 +38,7 @@
   margin-top: -66px;
 }
 
-.sleep-slider {
-  &__description,
-  &__info {
-    padding-left: 132px;
-  }
-}
-
-.sleep-slider__info {
+.sleep__info {
   display: flex;
   justify-content: space-around;
 
@@ -85,13 +78,13 @@
   }
 }
 
-.sleep-slider__info-item {
+.sleep__info-item {
   min-height: 200px;
   margin-bottom: 66px;
   position: relative;
 }
 
-.sleep-slider__button {
+.sleep__button {
   background: none;
   border: none;
   display: block;
@@ -116,8 +109,8 @@
    }
 }
 
-.sleep-slider__night-control,
-.sleep-slider__guests-control {
+.sleep__night-control,
+.sleep__guests-control {
   position: absolute;
   bottom: -70px;
   right: 0;
