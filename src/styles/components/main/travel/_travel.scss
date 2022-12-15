@@ -1,0 +1,92 @@
+.travel {
+  position: relative;
+  padding: 130px 0 250px;
+
+  background-image: url(../images/common/travel-drink.png);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+
+  &__head {
+    background-image: url(../images/common/travel-background.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    min-height: 780px;
+  }
+
+  &__description {
+    margin-top: -120px;
+    min-height: 320px;
+    background-image: url(../images/common/airlina-virgin.png);
+    background-repeat: no-repeat;
+    background-position: right -50px center;
+    img {
+      padding-left: 26px;
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+
+  &__subtitle {
+    text-align: right;
+    padding-right: 80px;
+    margin-top: -66px;
+  }
+
+  &__description,
+  &__info {
+    padding-left: 132px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-around;
+
+    &-item {
+      min-height: 200px;
+      margin-bottom: 66px;
+      position: relative;
+    }
+
+    &-subtitle {
+      font-style: 18px;
+      line-height: 22px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transform: rotate(-90deg);
+      position: absolute;
+      top: 97px;
+      left: -97px;
+      height: 0;
+      width: 200px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    &-title {
+      position: relative;
+      font-weight: 800;
+      font-size: 40px;
+      line-height: 36px;
+      text-transform: uppercase;
+      padding-left: 40px;
+      span {
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 5.25px;
+        opacity: 0.75;
+        line-height: 0;
+      }
+
+    }
+  }
+}

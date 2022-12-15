@@ -1,0 +1,30 @@
+mixin travel-item(subtitle, title)
+  li.travel__info-item
+    .travel__info-subtitle subtitle
+    .travel__info-title!= title
+
+section.travel
+  .container
+    h2.title
+      span Travel
+        h3 Travel
+    .travel__wrapper
+      .travel__head
+        .travel__subtitle
+          .subtitle
+            .headline--left Shore
+            .subtitle__head Airlie Beach #[span |] Australia
+      .travel__description
+        .description
+          .headline--right Airline
+          .description__head Virgin Australia
+          img(src="./images/common/avia-logo.png" alt="")
+
+      ul.travel__info
+        +travel-item('Destination', 'Queensland <br> Australia')
+        +travel-item('Distance', '7,065 Miles')
+        +travel-item('Travel Time', '23 Hours <br> 5 Minutes')
+        +travel-item('Pricing', '$1,976 USD <span>Round Trip</span>')
+
+      button.travel__button(type="button")
+        a.button-link(href="#") Book #[span Flight]
